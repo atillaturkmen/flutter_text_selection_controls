@@ -77,7 +77,7 @@ class FlutterSelectionControls extends MaterialTextSelectionControls {
 
       /// Handle the callback if the itemControl passed is of type [ToolBarItemControl.cut]
       if (control == ToolBarItemControl.cut) {
-        if (canCut(delegate)) return handleCut(delegate);
+        if (canCut(delegate)) return handleCut(delegate, clipboardStatus);
         return;
       }
 
@@ -99,7 +99,7 @@ class FlutterSelectionControls extends MaterialTextSelectionControls {
         text: value.text,
         selection: TextSelection.collapsed(offset: value.selection.end),
       ),
-      SelectionChangedCause.toolBar,
+      SelectionChangedCause.toolbar,
     );
     delegate.hideToolbar();
     return item.onItemPressed!(highlighted, value.selection.start, value.selection.end);
